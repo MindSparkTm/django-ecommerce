@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_db_logger',
     'molly.apps.MollyConfig',
 ]
 
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Molly.urls'
@@ -129,3 +131,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(asctime)s %(message)s'
+        },
+    },
+    'handlers': {
+        'db_log': {
+            'level': 'DEBUG',
+            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler'
+        },
+    },
+    'loggers': {
+        'db': {
+            'handlers': ['db_log'],
+            'level': 'DEBUG'
+        }
+    }
+}
