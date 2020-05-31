@@ -63,7 +63,7 @@ class Product(TimeStampedModel):
 
 
 class ProductImage(TimeStampedModel):
-    product = models.ForeignKey(Product, related_name='images')
+    product = models.ForeignKey(Product, related_name='images',on_delete=models.CASCADE)
     image = models.ImageField()
 
     def __str__(self):

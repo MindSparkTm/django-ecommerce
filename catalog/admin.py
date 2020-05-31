@@ -15,7 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'product', 'get_product_name')
+    list_display = ('id', 'get_product_name')
 
     def get_product_name(self, obj):
         return obj.name
