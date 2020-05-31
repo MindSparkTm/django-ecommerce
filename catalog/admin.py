@@ -1,5 +1,17 @@
 from django.contrib import admin
+from django import forms
 from .models import Product, ProductImage, Category
+
+
+class ProductAdminForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+    def clean_price(self):
+        if self.cleaned_data['price'] <= 0:
+            raise forms.ValidationError('Price must be greater than zero.')
+        return self.cleaned_data['price']
 
 
 # Register your models here.
@@ -13,6 +25,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    form = ProductAdminForm
     list_display = ('id', 'name', 'slug', 'sku',)
     prepopulated_fields = {'slug': ('name',)}
     list_display_links = ('name',)
