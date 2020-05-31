@@ -6,11 +6,13 @@ from .models import Product, ProductImage, Category
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'slug', 'is_active',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'slug', 'sku',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(ProductImage)
