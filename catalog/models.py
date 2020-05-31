@@ -70,5 +70,5 @@ class ProductImage(TimeStampedModel):
         return self.product.name
 
     class Meta:
-        db_table = 'productimages'
+        db_table = 'product_images'
         ordering = ['-created_at']
