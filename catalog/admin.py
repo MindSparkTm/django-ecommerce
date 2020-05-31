@@ -37,6 +37,6 @@ class ProductImageAdmin(admin.ModelAdmin):
     list_display = ('id', 'get_product_name')
 
     def get_product_name(self, obj):
-        return obj.name
+        return obj.product.name
 
     get_product_name.short_description = 'Product'
