@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_db_logger',
     'molly.apps.MollyConfig',
+    'common.apps.CommonConfig',
+    'catalog.apps.CatalogConfig',
 ]
 
 MIDDLEWARE = [
