@@ -162,3 +162,7 @@ LOGGING = {
         }
     }
 }
+
+SITE_NAME = 'Molly'
+META_KEYWORDS = 'Baby products, toys and other items'
+META_DESCRIPTION = 'Molly is an online shop for buying baby products'
